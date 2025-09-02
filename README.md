@@ -42,7 +42,7 @@ https://github.com/user-attachments/assets/96688854-460b-42a4-88fb-7694de15c909
 The application is run via a Gradio interface launched by `launch.py`. After training and having a checkpoint available, users can upload images, generate captions, and view explanation maps directly in the browser.
 
 ### Key highlights
-- **ClipCap-style captioning**: Generates captions by conditioning a decoder-only LM (OPT-125M) on CLIP-derived prefix tokens.
+- **CLIP captioning**: Generates captions by conditioning a decoder-only LM (OPT-125M) on CLIP-derived prefix tokens.
 - **Grad-CAM explainability**: Pixel-level overlays explain why top candidate captions are favored, with options for combined and individual maps and probability-aware alpha scaling.
 - **CLIP-based auto-labeling pipeline**: Converts raw image folders into CLIP embeddings and synthesized captions (from top-k prompt probabilities), enabling training without manual labels.
 - **Training loop and checkpointing**: Train the mapper+LM end-to-end on precomputed embeddings and captions, with periodic checkpoint saves.
