@@ -1,11 +1,17 @@
 from models.clip import CLIPW
+from models.vlm import ClipCaptioner
 from utils.knowledge import captions
 import os
 
-# TEST
-from models.vlm import ClipCaptioner
+# This file contains the entire pipeline that initialize the CLIP Wrapper and the CLIPCap model to 
+# Perform an evaluation on a given image, from different sources: The internal handler can manage 
+# image path, PIL and OpenCV Images. 
+# It will then produces it's output:
+# probs,image_features, combined_plot_image, individual_plot_images.
+
+# Init the Captioner (change the X with your epoch number)
 clipcap = ClipCaptioner()
-#clipcap.from_pretrained("train/checkpoints/clipcap_epoch_9.pt")
+clipcap.from_pretrained("train/checkpoints/clipcap_epoch_X.pt")
 
 # Create a CLIPW object
 clip_wrapper = CLIPW(captions=captions["fruits"])
@@ -16,7 +22,10 @@ output_folder_path = "results/results_path"
 output_folder_cv2 = "results/results_cv2"
 output_folder_pil = "results/results_pil"
 
-# TEST: open the image with various methods
+# TEST: We open the image with various methods: 
+# - From string 
+# - From PIL 
+# - From OPENCV
 from PIL import Image   
 
 # With PIL
@@ -27,7 +36,7 @@ import cv2
 original_img_cv2 = cv2.imread(image_file)
 
 
-# Get the visual explanation
+# Get the visual explanation from the string path
 out = clipcap.get_visual_explanation(image=image_file)
 
 # Get the visual explanation with PIL
@@ -37,7 +46,7 @@ out_pil = clipcap.get_visual_explanation(image=original_img_pil)
 out_cv2 = clipcap.get_visual_explanation(image=original_img_cv2)
 
 
-# Unpack the output
+# Unpack the output of the string path loaded into the model
 probs,image_features, combined_plot_image, individual_plot_images = out
 
 # Unpack the output with PIL
@@ -55,18 +64,17 @@ print(probs_pil)
 # Print probs with openCV
 print(probs_cv2)
 
-
 # Create the specified output directory if it doesn't already exist
 os.makedirs(output_folder_path, exist_ok=True)
 os.makedirs(output_folder_cv2, exist_ok=True)
 os.makedirs(output_folder_pil, exist_ok=True)
 
-# save combined plot image
+# save combined gradcam plot image
 combined_plot_image.save(f"{output_folder_path}/combined_plot.png")
 combined_plot_image_pil.save(f"{output_folder_pil}/combined_plot.png")
 combined_plot_image_cv2.save(f"{output_folder_cv2}/combined_plot.png")
 
-# save individual plot images
+# save individual gradcam plot images
 for i, image in enumerate(individual_plot_images):
     image.save(f"{output_folder_path}/individual_plot_{i}.png")
 for i, image in enumerate(individual_plot_images_pil):
@@ -74,6 +82,10 @@ for i, image in enumerate(individual_plot_images_pil):
 for i, image in enumerate(individual_plot_images_cv2):
     image.save(f"{output_folder_cv2}/individual_plot_{i}.png")
 
+
+# OTHER EVALUATIONS METHODS: If we
+# SINGLE IMAGE EVALUATION: Given a path of an image. 
+# USING GRADCAM, embedded into the CLIPWrapper class.
 """
 # Image path 
 image_file = "test_img.jpg"
@@ -122,8 +134,8 @@ clip_wrapper.visualize_gradcam(
 )
 """
 
-
-
+# ENTIRE FOLDER EVALUATION: From this, we can pass a folder of test images and evalute them one by one, 
+# Alongside the gradcam evaluation for each one of them.
 """
 # Folder evaluation
 # For each image in the folder 
