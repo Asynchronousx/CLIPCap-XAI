@@ -1,6 +1,8 @@
 ## CLIP-Captioner with Grad-CAM Explainability
 
-This repository contains a Vision-Language Model (VLM) for image captioning based on CLIP prefixes (ClipCap-style) with an emphasis on practical explainability using Grad-CAM over CLIP's visual transformer. The system pairs CLIP as the vision backbone and OPT-125M as the language model, bridged by a transformer mapper that projects CLIP image features into a sequence of prefix tokens consumed by the language model. Explainability visualizations highlight where the model focused when preferring one caption over another. A core contribution of this work is an automatic dataset labeling pipeline driven by CLIP: the model synthesizes training captions from top-k prompt probabilities and uses them to train the captioner end-to-end without manual labels.
+This repository contains a Vision-Language Model (VLM) for image captioning based on CLIP prefixes with an emphasis on practical explainability using Grad-CAM over CLIP's visual transformer. The system pairs CLIP as the vision backbone and OPT-125M as the language model, bridged by a transformer mapper that projects CLIP image features into a sequence of prefix tokens consumed by the language model, using the Prexif Tuning, A PEFT (Parameter Efficient Tuning) technique. 
+
+Explainability visualizations highlight where the model focused when preferring one caption over another. A core contribution of this work is an automatic dataset labeling pipeline driven by CLIP: the model synthesizes training captions from top-k prompt probabilities and uses them to train the captioner end-to-end without manual labels.
 
 This project is part of a research fellowship on the theme of "Digital Twin and Fintech services for sustainable supply chain" and part of my Master Thesis. The core objective is to find, identify, and explain—both visually and textually—defective items within a supply chain environment.
 
