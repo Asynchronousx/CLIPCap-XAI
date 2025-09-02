@@ -77,6 +77,7 @@ CLIPCap-XAI/
     plot.py           # Helpers to render individual and combined Grad-CAM overlays
     summarizer.py     # Synthesize a natural caption from top caption-probability pairs
   launch.py           # Gradio app for interactive captioning + Grad-CAM visualization on Web Interfaces
+  visualize.py        # File in which the entire Pipeline is tested and processed (basically, the what launch does but iterative)
   vlm_train.py        # Train Script: preprocess dataset and train the VLM
   vlm_predict.py      # Test script: load VLM checkpoint and run captioning + visualizations
   clip_predict.py     # Test script: CLIP-only demo (after training, for quick checks)
@@ -89,6 +90,11 @@ CLIPCap-XAI/
   - Loads a trained checkpoint (`MODEL_PATH`) into `ClipCaptioner`.
   - Exposes controls for caption generation (temperature, prefix text, lengths) and explainability (alpha, normalization).
   - On submit: saves a temp image, calls `model.generate`, and returns combined + individual Grad-CAM overlays, top-5 probabilities, and the final caption.
+
+- `visualize.py`
+  - Quick demo script to generate CLIP-based visual explanations (Grad-CAM) for an image using the project’s VLM.
+  - Instantiates ClipCaptioner (VLM) and a CLIPW wrapper with a predefined caption set.
+  - Loads the same image via path, PIL, and OpenCV to show input flexibility.
 
 - `vlm_train.py`
   - Demonstrates end-to-end training flow:
