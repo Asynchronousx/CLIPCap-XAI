@@ -6,7 +6,7 @@ This project is part of a research fellowship on the theme of "Digital Twin and 
 
 ![Individual 0](media/individual_plot_0.png)
 
-### How it works (core idea)
+## How it works (core idea)
 
 1) Visual understanding with CLIP (frozen)
    - CLIP encodes the input image into a 512-d feature vector (image embedding). On the text side, a domain-specific prompt set (in `utils/knowledge.py`) is tokenized once and cached.
