@@ -6,7 +6,7 @@ Explainability visualizations highlight where the model focused when preferring 
 
 This project is part of a research fellowship on the theme of "Digital Twin and Fintech services for sustainable supply chain" and part of my Master Thesis. The core objective is to find, identify, and explain—both visually and textually—defective items within a supply chain environment.
 
-![Individual 0](media/individual_plot_0.png)
+![Individual 0](assets/individual_plot_0.png)
 
 
 ## Video Demo
@@ -375,12 +375,12 @@ Preview of the output of the model:
 
 | Source image | Combined Grad-CAM overlay |
 |--------------|---------------------------|
-| <img src="media/source_img.jpg" alt="Source image" width="360" /> | <img src="media/combined_plot.png" alt="Combined Grad-CAM overlay" width="360" /> |
+| <img src="assets/source_img.jpg" alt="Source image" width="360" /> | <img src="assets/combined_plot.png" alt="Combined Grad-CAM overlay" width="360" /> |
 
 
 | Individual 0 | Individual 1 | Individual 2 | Individual 3 | Individual 4 |
 |--------------|--------------|--------------|--------------|--------------|
-| <img src="media/individual_plot_0.png" alt="Individual 0" width="180" /> | <img src="media/individual_plot_1.png" alt="Individual 1" width="180" /> | <img src="media/individual_plot_2.png" alt="Individual 2" width="180" /> | <img src="media/individual_plot_3.png" alt="Individual 3" width="180" /> | <img src="media/individual_plot_4.png" alt="Individual 4" width="180" /> |
+| <img src="assets/individual_plot_0.png" alt="Individual 0" width="180" /> | <img src="assets/individual_plot_1.png" alt="Individual 1" width="180" /> | <img src="assets/individual_plot_2.png" alt="Individual 2" width="180" /> | <img src="assets/individual_plot_3.png" alt="Individual 3" width="180" /> | <img src="assets/individual_plot_4.png" alt="Individual 4" width="180" /> |
 
 ## References
 
