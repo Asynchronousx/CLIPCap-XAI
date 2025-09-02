@@ -402,27 +402,14 @@ Media folder: FINAL_TESI/media/
 
 Preview:
 
-<div style="display: flex; gap: 8px; align-items: flex-start;">
-  <figure style="margin: 0;">
-    <img src="media/source_img.jpg" alt="Source image" width="360" />
-    <figcaption style="text-align:center; font-size: 12px;">Source image</figcaption>
-  </figure>
-  <figure style="margin: 0;">
-    <img src="media/combined_plot.png" alt="Combined Grad-CAM overlay" width="360" />
-    <figcaption style="text-align:center; font-size: 12px;">Combined Grad-CAM overlay</figcaption>
-  </figure>
-  
-</div>
+| Source image | Combined Grad-CAM overlay |
+|--------------|---------------------------|
+| <img src="media/source_img.jpg" alt="Source image" width="360" /> | <img src="media/combined_plot.png" alt="Combined Grad-CAM overlay" width="360" /> |
 
-<div style="height: 8px;"></div>
 
-<div style="display: flex; gap: 8px; flex-wrap: wrap;">
-  <img src="media/individual_plot_0.png" alt="Individual 0" width="180" />
-  <img src="media/individual_plot_1.png" alt="Individual 1" width="180" />
-  <img src="media/individual_plot_2.png" alt="Individual 2" width="180" />
-  <img src="media/individual_plot_3.png" alt="Individual 3" width="180" />
-  <img src="media/individual_plot_4.png" alt="Individual 4" width="180" />
-</div>
+| Individual 0 | Individual 1 | Individual 2 | Individual 3 | Individual 4 |
+|--------------|--------------|--------------|--------------|--------------|
+| <img src="media/individual_plot_0.png" alt="Individual 0" width="180" /> | <img src="media/individual_plot_1.png" alt="Individual 1" width="180" /> | <img src="media/individual_plot_2.png" alt="Individual 2" width="180" /> | <img src="media/individual_plot_3.png" alt="Individual 3" width="180" /> | <img src="media/individual_plot_4.png" alt="Individual 4" width="180" /> |
 
 ## Video demo
 
