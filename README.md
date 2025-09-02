@@ -8,6 +8,10 @@ This project is part of a research fellowship on the theme of "Digital Twin and 
 
 ![Individual 0](media/individual_plot_0.png)
 
+
+## Video Demo
+https://github.com/user-attachments/assets/96688854-460b-42a4-88fb-7694de15c909
+
 ## How it works (core idea)
 
 1) Visual understanding with CLIP (frozen)
@@ -410,13 +414,5 @@ If you use this repository, please cite the original works above and acknowledge
   url          = {https://github.com/<your-username>/<your-repo>](https://github.com/Asynchronousx/CLIPCap-XAI}
 }
 ```
-
-## Video demo
-
-Short demo of the Gradio app flow:
-
-<!-- {% include video.html path="/media/video.mp4" class="img-fluid rounded z-depth-1" controls=true autoplay=false%} -->
-<video style="width:100%" src="/media/video.mp4" controls=""></video>
-
 
 
