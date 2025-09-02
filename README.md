@@ -33,7 +33,7 @@ This project is part of a research fellowship on the theme of "Digital Twin and 
    - For each prompt, we backprop from the image–prompt matching score to get a spatial saliency map over image patches, then upsample to image size.
    - Visualizations include: (a) individual overlays per prompt (with the prompt’s probability), and (b) a combined overlay where per-prompt alpha can be constant or scaled by normalized probabilities. Thresholding controls which regions are visualized, and a legend ties color to prompt and probability.
 
-The application is run via a Gradio interface launched by `supplychain.py`. After training and having a checkpoint available, users can upload images, generate captions, and view explanation maps directly in the browser.
+The application is run via a Gradio interface launched by `launch.py`. After training and having a checkpoint available, users can upload images, generate captions, and view explanation maps directly in the browser.
 
 ### Key highlights
 - **ClipCap-style captioning**: Generates captions by conditioning a decoder-only LM (OPT-125M) on CLIP-derived prefix tokens.
@@ -70,7 +70,7 @@ FINAL_TESI/
     knowledge.py      # Prompt set (domain knowledge) for CLIP text side
     plot.py           # Helpers to render individual and combined Grad-CAM overlays
     summarizer.py     # Synthesize a natural caption from top caption-probability pairs
-  supplychain.py      # Gradio app for interactive captioning + Grad-CAM visualization
+  launch.py      # Gradio app for interactive captioning + Grad-CAM visualization
   vlm_train.py        # Script: preprocess dataset and train the VLM
   vlm_predict.py      # Test script: load VLM checkpoint and run captioning + visualizations
   clip_predict.py     # Test script: CLIP-only demo (after training, for quick checks)
@@ -78,7 +78,7 @@ FINAL_TESI/
 
 ### Files explained
 
-- `supplychain.py`
+- `launch.py`
   - Launches the Gradio UI (main entry point).
   - Loads a trained checkpoint (`MODEL_PATH`) into `ClipCaptioner`.
   - Exposes controls for caption generation (temperature, prefix text, lengths) and explainability (alpha, normalization).
@@ -205,10 +205,10 @@ model.train_model(dataset_path=processed_dir, output_dir=output_dir, epochs=10, 
 2) Launch the Gradio app (point to your checkpoint):
 
 ```bash
-python supplychain.py
+python launch.py
 ```
 
-Edit `MODEL_PATH` at the top of `supplychain.py` (e.g., `train/checkpoints/clipcap_epoch_9.pt`). Upload an image in the UI to generate a caption and view Grad-CAM overlays.
+Edit `MODEL_PATH` at the top of `launch.py` (e.g., `train/checkpoints/clipcap_epoch_9.pt`). Upload an image in the UI to generate a caption and view Grad-CAM overlays.
 
 
 ## Data preparation
@@ -297,10 +297,10 @@ print("All probabilities:", probs)
 
 ## Interactive demo (Gradio)
 
-Launch the Gradio UI in `supplychain.py` (this is the main application entry point). Edit the `MODEL_PATH` at the top if needed:
+Launch the Gradio UI in `launch.py` (this is the main application entry point). Edit the `MODEL_PATH` at the top if needed:
 
 ```bash
-python supplychain.py
+python launch.py
 ```
 
 UI features:
