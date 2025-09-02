@@ -238,6 +238,8 @@ model.preprocess_dataset(root_dir=root_dir, output_dir=processed_dir, batch_size
 model.train_model(dataset_path=processed_dir, output_dir=output_dir, epochs=10, batch_size=32)
 ```
 
+**Note that, even with a small amount of epoch (circa ~10) the model performs EXTREMELY well!**
+
 2) Launch the Gradio app (point to your checkpoint):
 
 ```bash
