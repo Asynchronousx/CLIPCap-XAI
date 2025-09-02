@@ -196,11 +196,13 @@ pip install transformers gradio tqdm pandas matplotlib opencv-python Pillow nump
 ```
 
 ## Model Output
-Before quickly starting to understand how this tool works, let's talks about the output of the model itself so if you want to test it out, a better understanding might be beneficial for test purposes. 
+Before starting to understand how this tool works, let's quickly talks about the output of the model itself so if you want to test it out, having a better understanding might be beneficial for test purposes. 
+
+There are mainly two usable model in this project: The CLIP wrapper and the actual CLIP-Captioner. 
 
 - CLIPW.visualize(image, ...):
   - `probs` (dict[str, float]): caption → softmax probability (sorted desc).
-  - `image_features` (torch.Tensor): CLIP image embedding (e.g., [1, 512]).
+  - `image_features` (torch.Tensor): CLIP image embedding (e.g., [1, 512]), Used for training purposes or saving .pt file for training.
   - `combined_plot_image` (PIL.Image | None): combined Grad-CAM overlay for top-k (None if k==1).
   - `individual_plot_images` (list[PIL.Image]): per-caption Grad-CAM overlays (one per top-k when enabled).
 
