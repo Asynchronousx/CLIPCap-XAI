@@ -3,8 +3,8 @@ from utils.knowledge import captions
 from models.vlm import ClipCaptioner
 from time import time
 
-# Example usage
-model_path = "train/checkpoints/clipcap_epoch_9.pt"
+# Example usage (change X with your epoch)
+model_path = "train/checkpoints/clipcap_epoch_X.pt"
     
 # First initialize the model with desired parameters
 model = ClipCaptioner()
