@@ -62,7 +62,7 @@ The application is run via a Gradio interface launched by `launch.py`. After tra
 ## Repository structure
 
 ```text
-FINAL_TESI/
+CLIPCap-XAI/
   models/
     clip.py           # CLIP wrapper: preprocessing, inference, Grad-CAM, preprocessing pipeline
     mapper.py         # TransformerMapper projecting CLIP features to LM embedding space
@@ -72,8 +72,8 @@ FINAL_TESI/
     knowledge.py      # Prompt set (domain knowledge) for CLIP text side
     plot.py           # Helpers to render individual and combined Grad-CAM overlays
     summarizer.py     # Synthesize a natural caption from top caption-probability pairs
-  launch.py      # Gradio app for interactive captioning + Grad-CAM visualization
-  vlm_train.py        # Script: preprocess dataset and train the VLM
+  launch.py           # Gradio app for interactive captioning + Grad-CAM visualization on Web Interfaces
+  vlm_train.py        # Train Script: preprocess dataset and train the VLM
   vlm_predict.py      # Test script: load VLM checkpoint and run captioning + visualizations
   clip_predict.py     # Test script: CLIP-only demo (after training, for quick checks)
 ```
@@ -88,7 +88,7 @@ FINAL_TESI/
 
 - `vlm_train.py`
   - Demonstrates end-to-end training flow:
-    1) `ClipCaptioner.preprocess_dataset`: walks a class-structured folder, computes CLIP embeddings and synthesized captions, writes `*.pt` and `caption_mapping.csv`.
+    1) `ClipCaptioner.preprocess_dataset`: explore a class-structured folder, computes CLIP embeddings from images and their synthesized captions, writes `*.pt` and `caption_mapping.csv` files ready to be used in the train process. 
     2) `ClipCaptioner.train_model`: trains the OPT-125M + TransformerMapper using teacher-forced captions; logs loss and saves periodic checkpoints.
   - Edit `root_dir`, `processed_dir`, `output_dir` before running.
 
@@ -115,7 +115,7 @@ FINAL_TESI/
     - `train_model(dataset_path, output_dir, epochs, ...)`: training loop with logging, scheduler, and checkpointing.
     - `from_pretrained(model_path)`: load a previously saved checkpoint.
 
-- `models/clip.py` (class `CLIPW`)
+- `models/clip.py` (class `CLIPW, Wrapper for the CLIP model`)
   - Thin, high-level wrapper around OpenAI CLIP for:
     - Image preprocessing and encoding.
     - Prompt tokenization and caching.
@@ -144,7 +144,6 @@ FINAL_TESI/
 
 - `utils/summarizer.py`
   - `synthesize(captions_with_probabilities)`: converts top-k (caption, probability) into a natural sentence using a severity hierarchy.
-
 
 
 ## Method overview
@@ -262,6 +261,8 @@ model.preprocess_dataset(root_dir=root_dir, output_dir=processed_dir, batch_size
 model.train_model(dataset_path=processed_dir, output_dir=output_dir, epochs=10, batch_size=32)
 ```
 
+Adjusts value as you please. 
+
 Training log and checkpoints are saved under `output_dir/` (e.g., `clipcap_epoch_9.pt`). Checkpoints store model and optimizer state.
 
 
@@ -300,6 +301,7 @@ print("All probabilities:", probs)
 
 ## Interactive demo (Gradio)
 
+The interactive demo is the heart of the entire application since it allows the user to play in real time with the tool. 
 Launch the Gradio UI in `launch.py` (this is the main application entry point). Edit the `MODEL_PATH` at the top if needed:
 
 ```bash
@@ -312,7 +314,7 @@ UI features:
 - Tune visualization parameters: combined alpha, enable normalization of alpha by top-k probabilities
 - See: combined overlay, per-caption overlays, top-5 caption probabilities, and the generated caption
 
-By default, the demo attempts to load `train/checkpoints/clipcap_epoch_9.pt` and enables `share=True` to expose a temporary public URL.
+By default, the demo attempts to load a checkpoint `train/checkpoints/clipcap_epoch_X.pt` and enables `share=True` to expose a temporary public Gradio URL.
 
 
 ## Explainability controls
