@@ -1,4 +1,4 @@
-## CLIP-Captioner with Grad-CAM Explainability
+## CLIPCap-XAI: An Explainable Vision-Language Model for Defect Detection in Supply Chain Environments
 
 This repository contains a **Vision-Language Model** (VLM) for image captioning based on CLIP prefixes with an emphasis on practical **explainability** using a custom **Grad-CAM* over CLIP's visual transformer layers. The system pairs **CLIP** as the **vision backbone** and **OPT-125M** as the **language model**, bridged by a **transformer mapper** that projects CLIP image features into a sequence of prefix tokens consumed by the language model, using the Prexif Tuning, A PEFT (**Parameter Efficient Tuning**) technique. 
 
