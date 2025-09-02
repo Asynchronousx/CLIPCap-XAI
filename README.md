@@ -4,6 +4,8 @@ This repository contains a Vision-Language Model (VLM) for image captioning base
 
 This project is part of a research fellowship on the theme of "Digital Twin and Fintech services for sustainable supply chain". The core objective is to find, identify, and explain—both visually and textually—defective items within a supply chain environment.
 
+![Individual 0](media/individual_plot_0.png)
+
 ### How it works (core idea)
 
 1) Visual understanding with CLIP (frozen)
