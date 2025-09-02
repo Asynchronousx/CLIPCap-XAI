@@ -415,6 +415,9 @@ Preview:
 
 Short demo of the Gradio app flow:
 
-<video src="media/video.mp4" width="300" controls></video>
+<video controls width="800" height="500" muted loop autoplay>
+  <source src="https://raw.githubusercontent.com/Asynchronousx/CLIPCap-XAI/main/media/video.mp4" type="video/mp4">
+</video>
+
 
 
